@@ -22,7 +22,11 @@ export default {
           line: "#d2d2d7",
           surface: "#f5f5f7",
         },
-        crab: "#a8431d",
+        crab: {
+          DEFAULT: "#d04a17",
+          deep: "#8a3014",
+          glow: "#ff5a1f",
+        },
       },
       letterSpacing: {
         tightest: "-0.025em",

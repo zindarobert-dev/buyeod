@@ -16,14 +16,14 @@ export interface IndustryColor {
 }
 
 const PALETTE: Record<string, IndustryColor> = {
-  bronze: { pin: "#a8431d", tint: "#fbf3ed", fg: "#7a3115", group: "bronze" },
-  amber:  { pin: "#b8801f", tint: "#fbf5e6", fg: "#7d550d", group: "amber"  },
-  rust:   { pin: "#8a3a2a", tint: "#fbeee8", fg: "#5e2618", group: "rust"   },
-  forest: { pin: "#2f5d3e", tint: "#eef5ee", fg: "#214428", group: "forest" },
-  sky:    { pin: "#3a6a8a", tint: "#eef3f8", fg: "#244c66", group: "sky"    },
-  navy:   { pin: "#1d3a5f", tint: "#eaeff5", fg: "#11254a", group: "navy"   },
-  plum:   { pin: "#5d3a5a", tint: "#f3eaf2", fg: "#41263e", group: "plum"   },
-  sand:   { pin: "#a07a3a", tint: "#f8f1e3", fg: "#6f5320", group: "sand"   },
+  bronze: { pin: "#d04a17", tint: "#fdeee5", fg: "#8a3014", group: "bronze" },
+  amber:  { pin: "#d4920f", tint: "#fbf2dc", fg: "#7d550d", group: "amber"  },
+  rust:   { pin: "#b34530", tint: "#fbeae5", fg: "#5e2618", group: "rust"   },
+  forest: { pin: "#2d7349", tint: "#eaf5ec", fg: "#214428", group: "forest" },
+  sky:    { pin: "#2f7eaa", tint: "#e6f1f8", fg: "#244c66", group: "sky"    },
+  navy:   { pin: "#1d4a85", tint: "#e6ecf6", fg: "#11254a", group: "navy"   },
+  plum:   { pin: "#7a4276", tint: "#f3e6f0", fg: "#41263e", group: "plum"   },
+  sand:   { pin: "#b8862e", tint: "#f8f0dd", fg: "#6f5320", group: "sand"   },
 };
 
 const RULES: Array<[RegExp, keyof typeof PALETTE]> = [

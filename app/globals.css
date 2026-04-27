@@ -55,12 +55,31 @@
 .leaflet-popup-tip { box-shadow: none; }
 
 .eod-pin {
-  width: 14px;
-  height: 14px;
+  position: relative;
+  width: 16px;
+  height: 16px;
   border-radius: 9999px;
   background: #1d1d1f;
-  border: 2px solid #fff;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.22);
-  transition: transform 120ms ease;
+  border: 2.5px solid #fff;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.18),
+    0 4px 14px rgba(0,0,0,0.25),
+    0 0 0 6px color-mix(in srgb, currentColor 0%, transparent);
+  transition: transform 140ms ease, box-shadow 140ms ease;
 }
-.eod-pin:hover { transform: scale(1.25); }
+.eod-pin::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 9999px;
+  background: inherit;
+  opacity: 0.18;
+  z-index: -1;
+  filter: blur(2px);
+}
+.eod-pin:hover {
+  transform: scale(1.3);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.18),
+    0 8px 22px rgba(0,0,0,0.32);
+}

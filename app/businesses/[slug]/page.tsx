@@ -37,7 +37,7 @@ export default async function BusinessPage({ params }: PageProps) {
       </Link>
 
       <div className="mt-8 max-w-3xl">
-        <div className="text-[12px] font-medium uppercase tracking-[0.18em] text-ink-muted">
+        <div className="text-[12px] font-semibold uppercase tracking-[0.18em] text-crab">
           {business.industry || "Business"}
         </div>
         <h1 className="display-1 mt-4 text-ink">{business.name}</h1>
@@ -88,7 +88,7 @@ export default async function BusinessPage({ params }: PageProps) {
             href={business.website}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex h-11 items-center rounded-full bg-ink px-6 text-[14px] font-medium text-white transition-colors hover:bg-ink/85"
+            className="inline-flex h-12 items-center rounded-full bg-crab px-7 text-[14px] font-semibold text-white shadow-[0_8px_24px_-8px_rgba(208,74,23,0.55)] transition-all hover:bg-crab-deep hover:shadow-[0_10px_28px_-8px_rgba(208,74,23,0.7)]"
           >
             Visit website ↗
           </a>

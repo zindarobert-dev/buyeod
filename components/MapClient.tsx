@@ -12,9 +12,9 @@ import { industryColor } from "@/lib/industry-colors";
 function pinIconFor(color: string) {
   return L.divIcon({
     className: "",
-    html: `<div class="eod-pin" style="background:${color}"></div>`,
-    iconSize: [14, 14],
-    iconAnchor: [7, 7],
+    html: `<div class="eod-pin" style="background:${color};color:${color}"></div>`,
+    iconSize: [16, 16],
+    iconAnchor: [8, 8],
   });
 }
 

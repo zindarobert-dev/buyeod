@@ -29,7 +29,7 @@ export default async function BusinessesPage({ searchParams }: PageProps) {
 
   return (
     <section className="container-page py-16 sm:py-20">
-      <div className="text-[12px] font-medium uppercase tracking-[0.18em] text-ink-muted">
+      <div className="text-[12px] font-semibold uppercase tracking-[0.18em] text-crab">
         Directory
       </div>
       <h1 className="display-2 mt-3 text-ink">

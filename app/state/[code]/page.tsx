@@ -39,7 +39,7 @@ export default async function StatePage({ params }: PageProps) {
       >
         ← Directory
       </Link>
-      <div className="mt-6 text-[12px] font-medium uppercase tracking-[0.18em] text-ink-muted">
+      <div className="mt-6 text-[12px] font-semibold uppercase tracking-[0.18em] text-crab">
         {upper}
       </div>
       <h1 className="display-1 mt-3 text-ink">{STATE_NAMES[upper]}.</h1>
