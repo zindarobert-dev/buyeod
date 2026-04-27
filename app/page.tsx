@@ -12,9 +12,18 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="container-page pt-24 pb-16 sm:pt-32 sm:pb-20">
+      <section className="relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10"
+          style={{
+            backgroundImage:
+              "radial-gradient(1100px 520px at 12% -10%, rgba(168,67,29,0.18), transparent 60%), radial-gradient(900px 480px at 95% 0%, rgba(184,128,31,0.16), transparent 60%), radial-gradient(700px 400px at 50% 110%, rgba(29,58,95,0.10), transparent 65%)",
+          }}
+        />
+        <div className="container-page pt-24 pb-16 sm:pt-32 sm:pb-20">
         <div className="max-w-4xl">
-          <div className="text-[12px] font-medium uppercase tracking-[0.18em] text-ink-muted">
+          <div className="text-[12px] font-medium uppercase tracking-[0.18em] text-crab">
             Explosive Ordnance Disposal
           </div>
           <h1 className="display-1 mt-4 text-ink">
@@ -40,6 +49,7 @@ export default function Home() {
               Submit your business
             </a>
           </div>
+        </div>
         </div>
       </section>
 
@@ -107,13 +117,27 @@ export default function Home() {
 
       {/* CTA */}
       <section className="container-page mt-28">
-        <div className="rounded-3xl bg-ink px-8 py-16 text-white sm:px-16 sm:py-20">
-          <div className="max-w-2xl">
-            <div className="text-[12px] font-medium uppercase tracking-[0.18em] text-white/60">
+        <div
+          className="relative overflow-hidden rounded-3xl px-8 py-16 text-white sm:px-16 sm:py-20"
+          style={{
+            backgroundImage:
+              "radial-gradient(900px 600px at 0% 0%, #c2502a, transparent 60%), radial-gradient(700px 500px at 100% 100%, #5d2a18, transparent 65%), linear-gradient(135deg, #8a2f17 0%, #3a1408 100%)",
+          }}
+        >
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 mix-blend-overlay opacity-60"
+            style={{
+              backgroundImage:
+                "radial-gradient(600px 300px at 80% 0%, rgba(255,255,255,0.15), transparent 60%)",
+            }}
+          />
+          <div className="relative max-w-2xl">
+            <div className="text-[12px] font-medium uppercase tracking-[0.18em] text-white/70">
               For business owners
             </div>
             <h2 className="display-2 mt-3 text-white">Are you EOD? Get listed.</h2>
-            <p className="mt-5 text-[17px] leading-relaxed text-white/70">
+            <p className="mt-5 text-[17px] leading-relaxed text-white/80">
               If you're an EOD tech with a business — coffee, consulting, construction,
               code, anything — submit it and we'll add you to the directory.
             </p>

@@ -60,7 +60,7 @@
   border-radius: 9999px;
   background: #1d1d1f;
   border: 2px solid #fff;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 4px 10px rgba(0,0,0,0.18);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.22);
   transition: transform 120ms ease;
 }
-.eod-pin:hover { transform: scale(1.15); }
+.eod-pin:hover { transform: scale(1.25); }

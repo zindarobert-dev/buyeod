@@ -7,13 +7,16 @@ import { useEffect, useMemo } from "react";
 import Link from "next/link";
 import type { Business } from "@/lib/types";
 import { pinFor } from "@/lib/businesses";
+import { industryColor } from "@/lib/industry-colors";
 
-const pinIcon = L.divIcon({
-  className: "",
-  html: `<div class="eod-pin"></div>`,
-  iconSize: [14, 14],
-  iconAnchor: [7, 7],
-});
+function pinIconFor(color: string) {
+  return L.divIcon({
+    className: "",
+    html: `<div class="eod-pin" style="background:${color}"></div>`,
+    iconSize: [14, 14],
+    iconAnchor: [7, 7],
+  });
+}
 
 interface MarkerEntry {
   business: Business;
@@ -33,8 +36,6 @@ function FitToMarkers({ markers }: { markers: MarkerEntry[] }) {
 export default function MapClient({ businesses }: { businesses: Business[] }) {
   const markers = useMemo<MarkerEntry[]>(() => {
     const out: MarkerEntry[] = [];
-    // Group businesses sharing the same state-center pin so we can offset them slightly,
-    // otherwise multi-business states render as a single dot.
     const groups = new Map<string, Business[]>();
     for (const b of businesses) {
       const p = pinFor(b);
@@ -75,24 +76,27 @@ export default function MapClient({ businesses }: { businesses: Business[] }) {
         url="https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png"
         pane="overlayPane"
       />
-      {markers.map(({ business, position }) => (
-        <Marker key={business.slug} position={position} icon={pinIcon}>
-          <Popup>
-            <div className="font-semibold tracking-tight text-[14px] text-[#1d1d1f]">
-              {business.name}
-            </div>
-            <div className="mt-0.5 text-[12px] text-[#6e6e73]">
-              {business.industry} · {business.location}
-            </div>
-            <Link
-              href={`/businesses/${business.slug}`}
-              className="mt-2 inline-block text-[12px] font-medium text-[#1d1d1f] underline underline-offset-2"
-            >
-              View business →
-            </Link>
-          </Popup>
-        </Marker>
-      ))}
+      {markers.map(({ business, position }) => {
+        const color = industryColor(business.industry).pin;
+        return (
+          <Marker key={business.slug} position={position} icon={pinIconFor(color)}>
+            <Popup>
+              <div className="font-semibold tracking-tight text-[14px] text-[#1d1d1f]">
+                {business.name}
+              </div>
+              <div className="mt-0.5 text-[12px] text-[#6e6e73]">
+                {business.industry} · {business.location}
+              </div>
+              <Link
+                href={`/businesses/${business.slug}`}
+                className="mt-2 inline-block text-[12px] font-medium text-[#1d1d1f] underline underline-offset-2"
+              >
+                View business →
+              </Link>
+            </Popup>
+          </Marker>
+        );
+      })}
       <FitToMarkers markers={markers} />
     </MapContainer>
   );

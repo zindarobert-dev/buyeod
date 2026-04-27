@@ -1,16 +1,30 @@
 import Link from "next/link";
 import type { Business } from "@/lib/types";
 import { STATE_NAMES } from "@/lib/states";
+import { industryColor } from "@/lib/industry-colors";
 
 export function BusinessCard({ business }: { business: Business }) {
+  const color = industryColor(business.industry);
   return (
     <Link
       href={`/businesses/${business.slug}`}
-      className="group block rounded-2xl border border-ink-line/70 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-ink/30 hover:shadow-[0_12px_32px_-12px_rgba(0,0,0,0.18)]"
+      className="group relative block overflow-hidden rounded-2xl border border-ink-line/70 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-ink/30 hover:shadow-[0_18px_44px_-18px_rgba(0,0,0,0.22)]"
     >
-      <div className="flex items-start justify-between gap-3">
-        <div className="text-[11px] font-medium uppercase tracking-[0.12em] text-ink-muted">
-          {business.industry || "Business"}
+      <span
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-1"
+        style={{ backgroundColor: color.pin }}
+      />
+      <div className="flex items-start justify-between gap-3 pt-2">
+        <div className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.12em]">
+          <span
+            aria-hidden="true"
+            className="h-1.5 w-1.5 rounded-full"
+            style={{ backgroundColor: color.pin }}
+          />
+          <span style={{ color: color.fg }}>
+            {business.industry || "Business"}
+          </span>
         </div>
         {business.state && (
           <div className="text-[11px] font-medium text-ink-muted">
@@ -31,7 +45,10 @@ export function BusinessCard({ business }: { business: Business }) {
       )}
       <div className="mt-5 flex items-center justify-between text-[13px]">
         <span className="text-ink-muted">{business.ownerName}</span>
-        <span className="text-ink/70 transition-transform group-hover:translate-x-0.5">
+        <span
+          className="transition-transform group-hover:translate-x-0.5"
+          style={{ color: color.pin }}
+        >
           →
         </span>
       </div>
