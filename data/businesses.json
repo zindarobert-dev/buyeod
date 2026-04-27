@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Junction City General Contracting and Disposal",
+    "ownerName": "Stephan Acevedo",
+    "industry": "General contracting",
+    "location": "Junction City, KS",
+    "website": "https://Www.jc-gc.com",
+    "phone": "7854736084",
+    "description": "Residential and Commercial remodeling"
+  },
+  {
+    "name": "Net Positive Financials",
+    "ownerName": "Robert Zinda",
+    "industry": "Accounting and CFO",
+    "location": "Custer, WI",
+    "website": "https://netpositivefinancials.com",
+    "phone": "9529996081",
+    "description": "To strengthen the backbone of America by giving mission-driven businesses financial clarity, confidence, and control so they can serve their people, their communities, and their families with integrity."
+  },
+  {
+    "name": "T Regrut Custom Knives LLC",
+    "ownerName": "Tim Regrut",
+    "industry": "Cutlery",
+    "location": "South Carolina",
+    "phone": "843-742-7201",
+    "description": "Handmade Custom Knives"
+  },
+  {
+    "name": "Bulletpicker, LLC",
+    "ownerName": "Ted Carlson",
+    "industry": "Information services",
+    "location": "Camp Hill, Alabama",
+    "website": "https://bulletpicker.com",
+    "phone": "703-505-1863",
+    "description": "1400+ technical manuals (and 650+ Russian manuals) covering ordnance used from World War 1 to present day - free of charge"
+  }
+]
