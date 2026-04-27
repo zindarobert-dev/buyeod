@@ -4,7 +4,7 @@ import { Logo } from "./Logo";
 export function Nav() {
   return (
     <header className="sticky top-0 z-40 border-b border-ink-line/60 bg-white/80 backdrop-blur-xl">
-      <div className="container-page flex h-12 items-center justify-between text-[13px]">
+      <div className="container-page flex h-16 items-center justify-between text-[13px]">
         <Link href="/" aria-label="BuyEOD home">
           <Logo />
         </Link>

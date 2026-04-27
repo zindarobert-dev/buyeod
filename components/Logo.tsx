@@ -1,31 +1,55 @@
+import Image from "next/image";
+
+const BADGE_SRC = "/master-badge.png";
+const BADGE_W = 327;
+const BADGE_H = 250;
+
 export function LogoMark({ className = "" }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 16 16"
+    <Image
+      src={BADGE_SRC}
+      alt="EOD Master Badge"
+      width={BADGE_W}
+      height={BADGE_H}
+      priority
       className={className}
-      aria-hidden="true"
-      role="img"
-    >
-      <circle cx="8" cy="8" r="7" fill="#1d1d1f" />
-      <circle cx="8" cy="8" r="2.6" fill="#a8431d" />
-    </svg>
+    />
   );
 }
 
 export function Logo({
   className = "",
   size = "md",
+  showWordmark = true,
 }: {
   className?: string;
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
+  showWordmark?: boolean;
 }) {
-  const mark = size === "lg" ? "h-3.5 w-3.5" : size === "sm" ? "h-2 w-2" : "h-2.5 w-2.5";
+  const markH =
+    size === "xl"
+      ? "h-20"
+      : size === "lg"
+        ? "h-12"
+        : size === "sm"
+          ? "h-6"
+          : "h-8";
   const text =
-    size === "lg" ? "text-[20px]" : size === "sm" ? "text-[12px]" : "text-[14px]";
+    size === "xl"
+      ? "text-[32px]"
+      : size === "lg"
+        ? "text-[20px]"
+        : size === "sm"
+          ? "text-[12px]"
+          : "text-[15px]";
   return (
-    <span className={`inline-flex items-center gap-2 ${className}`}>
-      <LogoMark className={mark} />
-      <span className={`font-semibold tracking-tight text-ink ${text}`}>BuyEOD</span>
+    <span className={`inline-flex items-center gap-2.5 ${className}`}>
+      <LogoMark className={`${markH} w-auto`} />
+      {showWordmark && (
+        <span className={`font-semibold tracking-tight text-ink ${text}`}>
+          BuyEOD
+        </span>
+      )}
     </span>
   );
 }
