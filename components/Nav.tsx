@@ -41,19 +41,17 @@ export async function Nav() {
           >
             Community
           </a>
-          {isAdmin && (
-            <Link
-              href="/admin"
-              className="inline-flex items-center gap-1.5 text-ink hover:text-crab transition-colors font-medium"
-            >
-              Admin
-              {pendingCount > 0 && (
-                <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-crab px-1.5 text-[11px] font-semibold text-white">
-                  {pendingCount}
-                </span>
-              )}
-            </Link>
-          )}
+          <Link
+            href="/admin"
+            className="inline-flex items-center gap-1.5 hover:text-ink transition-colors"
+          >
+            Admin
+            {isAdmin && pendingCount > 0 && (
+              <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-crab px-1.5 text-[11px] font-semibold text-white">
+                {pendingCount}
+              </span>
+            )}
+          </Link>
           <Link
             href="/submit"
             className="inline-flex h-8 items-center rounded-full bg-crab px-4 text-[13px] font-semibold text-white transition-colors hover:bg-crab-deep"
