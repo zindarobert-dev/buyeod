@@ -16,8 +16,10 @@ interface PageProps {
 
 export default async function BusinessesPage({ searchParams }: PageProps) {
   const sp = await searchParams;
-  const all = getAllBusinesses();
-  const activeStates = getActiveStates();
+  const [all, activeStates] = await Promise.all([
+    getAllBusinesses(),
+    getActiveStates(),
+  ]);
 
   const selectedRaw = sp.state?.toUpperCase();
   const selected: StateCode | null =

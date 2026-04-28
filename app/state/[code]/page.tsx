@@ -11,7 +11,8 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return getActiveStates().map((s) => ({ code: s.toLowerCase() }));
+  const states = await getActiveStates();
+  return states.map((s) => ({ code: s.toLowerCase() }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -29,7 +30,7 @@ export default async function StatePage({ params }: PageProps) {
   const { code } = await params;
   const upper = code.toUpperCase() as StateCode;
   if (!STATE_NAMES[upper]) notFound();
-  const businesses = getBusinessesByState(upper);
+  const businesses = await getBusinessesByState(upper);
 
   return (
     <section className="container-page py-16 sm:py-20">

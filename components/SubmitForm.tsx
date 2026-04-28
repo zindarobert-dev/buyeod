@@ -9,6 +9,7 @@ interface FormState {
   industry: string;
   website: string;
   ownerName: string;
+  email: string;
   phone: string;
   location: string;
   description: string;
@@ -20,6 +21,7 @@ const EMPTY: FormState = {
   industry: "",
   website: "",
   ownerName: "",
+  email: "",
   phone: "",
   location: "",
   description: "",
@@ -111,14 +113,25 @@ export function SubmitForm() {
           placeholder="Asheville, NC"
         />
       </div>
-      <Field
-        label="Owner name"
-        required
-        value={values.ownerName}
-        onChange={(v) => update("ownerName", v)}
-        placeholder="Jake Morrison"
-        autoComplete="name"
-      />
+      <div className="grid gap-6 sm:grid-cols-2">
+        <Field
+          label="Owner name"
+          required
+          value={values.ownerName}
+          onChange={(v) => update("ownerName", v)}
+          placeholder="Jake Morrison"
+          autoComplete="name"
+        />
+        <Field
+          label="Your email"
+          value={values.email}
+          onChange={(v) => update("email", v)}
+          placeholder="you@example.com"
+          type="email"
+          autoComplete="email"
+          hint="Not displayed publicly. Lets us follow up if needed."
+        />
+      </div>
       <div className="grid gap-6 sm:grid-cols-2">
         <Field
           label="Website"
@@ -206,6 +219,7 @@ function Field({
   placeholder,
   type = "text",
   autoComplete,
+  hint,
 }: {
   label: string;
   required?: boolean;
@@ -214,6 +228,7 @@ function Field({
   placeholder?: string;
   type?: string;
   autoComplete?: string;
+  hint?: string;
 }) {
   return (
     <label className="block">
@@ -230,6 +245,9 @@ function Field({
         autoComplete={autoComplete}
         className="mt-2 w-full rounded-xl border border-ink-line bg-white px-4 py-3 text-[15px] text-ink placeholder:text-ink-muted/70 transition-colors focus:border-crab focus:outline-none focus:ring-4 focus:ring-crab/15"
       />
+      {hint && (
+        <span className="mt-1.5 block text-[12px] text-ink-muted">{hint}</span>
+      )}
     </label>
   );
 }

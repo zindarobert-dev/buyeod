@@ -8,13 +8,9 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateStaticParams() {
-  return getAllBusinesses().map((b) => ({ slug: b.slug }));
-}
-
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const b = getBusinessBySlug(slug);
+  const b = await getBusinessBySlug(slug);
   if (!b) return { title: "Business — BuyEOD" };
   return {
     title: `${b.name} — BuyEOD`,
@@ -24,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function BusinessPage({ params }: PageProps) {
   const { slug } = await params;
-  const business = getBusinessBySlug(slug);
+  const business = await getBusinessBySlug(slug);
   if (!business) notFound();
 
   return (

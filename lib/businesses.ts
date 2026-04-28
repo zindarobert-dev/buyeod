@@ -1,44 +1,55 @@
-import raw from "@/data/businesses.json";
+import { cache } from "react";
+import { eq } from "drizzle-orm";
+import { db, schema } from "@/db/client";
 import type { Business, StateCode } from "./types";
-import { STATE_CENTERS, parseState } from "./states";
-import { slugify } from "./slug";
+import { STATE_CENTERS } from "./states";
 
-interface RawBusiness {
-  name: string;
-  ownerName: string;
-  industry: string;
-  location: string;
-  website?: string;
-  phone?: string;
-  description?: string;
-  coordinates?: { lat: number; lng: number };
-}
-
-const businesses: Business[] = (raw as RawBusiness[]).map((b) => {
-  const state = parseState(b.location);
-  return {
-    ...b,
-    slug: slugify(b.name),
-    state,
-  };
+/**
+ * One DB read per request (cached via React.cache). All public pages share
+ * the same approved-business set, so we fetch once and filter in memory.
+ */
+export const getApprovedBusinesses = cache(async (): Promise<Business[]> => {
+  const rows = await db
+    .select()
+    .from(schema.businesses)
+    .where(eq(schema.businesses.status, "approved"));
+  return rows
+    .map(rowToBusiness)
+    .sort((a, b) => a.name.localeCompare(b.name));
 });
 
-export function getAllBusinesses(): Business[] {
-  return businesses.slice().sort((a, b) => a.name.localeCompare(b.name));
+function rowToBusiness(r: typeof schema.businesses.$inferSelect): Business {
+  return {
+    slug: r.slug,
+    name: r.name,
+    ownerName: r.ownerName,
+    industry: r.industry,
+    location: r.location,
+    state: (r.state ?? null) as StateCode | null,
+    website: r.website ?? undefined,
+    phone: r.phone ?? undefined,
+    description: r.description ?? undefined,
+  };
 }
 
-export function getBusinessBySlug(slug: string): Business | undefined {
-  return businesses.find((b) => b.slug === slug);
+export async function getAllBusinesses(): Promise<Business[]> {
+  return getApprovedBusinesses();
 }
 
-export function getBusinessesByState(state: StateCode): Business[] {
-  return businesses.filter((b) => b.state === state);
+export async function getBusinessBySlug(slug: string): Promise<Business | undefined> {
+  const all = await getApprovedBusinesses();
+  return all.find((b) => b.slug === slug);
 }
 
-/** States that currently have at least one business, sorted alphabetically by code. */
-export function getActiveStates(): StateCode[] {
+export async function getBusinessesByState(state: StateCode): Promise<Business[]> {
+  const all = await getApprovedBusinesses();
+  return all.filter((b) => b.state === state);
+}
+
+export async function getActiveStates(): Promise<StateCode[]> {
+  const all = await getApprovedBusinesses();
   const set = new Set<StateCode>();
-  for (const b of businesses) if (b.state) set.add(b.state);
+  for (const b of all) if (b.state) set.add(b.state);
   return [...set].sort();
 }
 
@@ -49,6 +60,7 @@ export function pinFor(b: Business): [number, number] | null {
   return null;
 }
 
-export function getIndustries(): string[] {
-  return [...new Set(businesses.map((b) => b.industry).filter(Boolean))].sort();
+export async function getIndustries(): Promise<string[]> {
+  const all = await getApprovedBusinesses();
+  return [...new Set(all.map((b) => b.industry).filter(Boolean))].sort();
 }

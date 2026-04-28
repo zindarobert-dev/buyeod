@@ -4,9 +4,11 @@ import { BusinessCard } from "@/components/BusinessCard";
 import { getAllBusinesses, getActiveStates } from "@/lib/businesses";
 import { STATE_NAMES } from "@/lib/states";
 
-export default function Home() {
-  const businesses = getAllBusinesses();
-  const states = getActiveStates();
+export default async function Home() {
+  const [businesses, states] = await Promise.all([
+    getAllBusinesses(),
+    getActiveStates(),
+  ]);
   const featured = businesses.slice(0, 6);
 
   return (
