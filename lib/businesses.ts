@@ -2,7 +2,10 @@ import { cache } from "react";
 import { eq } from "drizzle-orm";
 import { db, schema } from "@/db/client";
 import type { Business, StateCode } from "./types";
-import { STATE_CENTERS } from "./states";
+
+// Re-export so existing call sites keep working without pulling lib/businesses
+// (and the DB client) into client bundles.
+export { pinFor } from "./states";
 
 /**
  * One DB read per request (cached via React.cache). All public pages share
@@ -51,13 +54,6 @@ export async function getActiveStates(): Promise<StateCode[]> {
   const set = new Set<StateCode>();
   for (const b of all) if (b.state) set.add(b.state);
   return [...set].sort();
-}
-
-/** Coordinates to render a pin for a business, falling back to the state centroid. */
-export function pinFor(b: Business): [number, number] | null {
-  if (b.coordinates) return [b.coordinates.lat, b.coordinates.lng];
-  if (b.state) return STATE_CENTERS[b.state];
-  return null;
 }
 
 export async function getIndustries(): Promise<string[]> {

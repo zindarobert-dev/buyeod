@@ -1,4 +1,4 @@
-import type { StateCode } from "./types";
+import type { Business, StateCode } from "./types";
 
 export const STATE_NAMES: Record<StateCode, string> = {
   AL: "Alabama", AK: "Alaska", AZ: "Arizona", AR: "Arkansas", CA: "California",
@@ -70,3 +70,12 @@ export function parseState(location: string): StateCode | null {
 }
 
 export const ALL_STATES: StateCode[] = Object.keys(STATE_NAMES) as StateCode[];
+
+/** Coordinates to render a pin for a business, falling back to the state centroid.
+ *  Lives here (and not in lib/businesses.ts) so client components can import it
+ *  without pulling the DB client into the browser bundle. */
+export function pinFor(b: Business): [number, number] | null {
+  if (b.coordinates) return [b.coordinates.lat, b.coordinates.lng];
+  if (b.state) return STATE_CENTERS[b.state];
+  return null;
+}

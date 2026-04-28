@@ -6,7 +6,7 @@ import "leaflet/dist/leaflet.css";
 import { useEffect, useMemo } from "react";
 import Link from "next/link";
 import type { Business } from "@/lib/types";
-import { pinFor } from "@/lib/businesses";
+import { pinFor } from "@/lib/states";
 import { industryColor } from "@/lib/industry-colors";
 
 function pinIconFor(color: string) {
