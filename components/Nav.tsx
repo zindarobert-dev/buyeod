@@ -8,21 +8,27 @@ export function Nav() {
         <Link href="/" aria-label="BuyEOD home">
           <Logo />
         </Link>
-        <nav className="flex items-center gap-7 text-ink-muted">
+        <nav className="flex items-center gap-6 text-ink-muted">
           <Link href="/businesses" className="hover:text-ink transition-colors">
             Directory
           </Link>
-          <Link href="/about" className="hover:text-ink transition-colors">
+          <Link href="/about" className="hover:text-ink transition-colors hidden sm:inline">
             About
           </Link>
           <a
             href="https://www.facebook.com/groups/3602986686487583"
             target="_blank"
             rel="noreferrer"
-            className="hover:text-ink transition-colors"
+            className="hover:text-ink transition-colors hidden sm:inline"
           >
             Community
           </a>
+          <Link
+            href="/submit"
+            className="inline-flex h-8 items-center rounded-full bg-crab px-4 text-[13px] font-semibold text-white transition-colors hover:bg-crab-deep"
+          >
+            Submit
+          </Link>
         </nav>
       </div>
     </header>

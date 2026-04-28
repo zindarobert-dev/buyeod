@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const metadata = {
   title: "About — BuyEOD",
   description: "Why BuyEOD exists.",
@@ -26,14 +28,12 @@ export default function AboutPage() {
           </p>
           <p>
             If you're an EOD tech with a business and you're not on here yet,{" "}
-            <a
-              href="https://www.facebook.com/groups/3602986686487583"
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              href="/submit"
               className="text-ink underline underline-offset-4 hover:no-underline"
             >
-              submit it through the Facebook group
-            </a>
+              get listed
+            </Link>
             . We add new listings as they come in.
           </p>
         </div>

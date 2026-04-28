@@ -41,14 +41,12 @@ export default function Home() {
               >
                 Browse the directory
               </Link>
-              <a
-                href="https://www.facebook.com/groups/3602986686487583"
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href="/submit"
                 className="inline-flex h-12 items-center rounded-full border border-ink/15 bg-white/70 px-7 text-[14px] font-semibold text-ink backdrop-blur transition-colors hover:border-ink/40 hover:bg-white"
               >
                 Submit your business
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -157,14 +155,12 @@ export default function Home() {
               If you're an EOD tech with a business — coffee, consulting, construction,
               code, anything — submit it and we'll add you to the directory.
             </p>
-            <a
-              href="https://www.facebook.com/groups/3602986686487583"
-              target="_blank"
-              rel="noreferrer"
-              className="mt-8 inline-flex h-11 items-center rounded-full bg-white px-6 text-[14px] font-medium text-ink transition-colors hover:bg-white/90"
+            <Link
+              href="/submit"
+              className="mt-8 inline-flex h-11 items-center rounded-full bg-white px-6 text-[14px] font-semibold text-ink transition-colors hover:bg-white/90"
             >
               Submit your business
-            </a>
+            </Link>
           </div>
         </div>
       </section>
