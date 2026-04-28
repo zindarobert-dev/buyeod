@@ -33,5 +33,50 @@
     "website": "https://bulletpicker.com",
     "phone": "703-505-1863",
     "description": "1400+ technical manuals (and 650+ Russian manuals) covering ordnance used from World War 1 to present day - free of charge"
+  },
+  {
+    "name": "BoxFin Farms",
+    "ownerName": "Justin Talbert and Christopher Gray",
+    "industry": "Maple Syrup",
+    "location": "Theresa, NY",
+    "website": "https://www.boxfinfarms.com",
+    "phone": "315-486-1986",
+    "description": "Small-scale, hand crafted Maple Syrup operation."
+  },
+  {
+    "name": "Redline Secure Strategies",
+    "ownerName": "Doug Frey",
+    "industry": "Security Consulting",
+    "location": "Baton Rouge, LA",
+    "website": "https://Redline-secure.com",
+    "phone": "225-939-8988",
+    "description": "Physical and cybersecurity consulting and USCG MTSA compliance."
+  },
+  {
+    "name": "Sea 4 Ventures",
+    "ownerName": "Chris & Lilly Rogers",
+    "industry": "Family Friendly Fishing and Eco Charters",
+    "location": "Navarre, Fl",
+    "website": "https://www.sea4ventures.us",
+    "phone": "(850) 972-9087",
+    "description": "Sea 4 Ventures is owned and operated by Chris & Lilly Rogers. Both retired bomb techs from the Public Safety and Military respectively. Capt Chris will show you all the Gulf waters have to offer from reef fishing, site seeing the beautiful emerald waters to dolphin tours. Up to 6 guests can enjoy a fun filled  4, 6, or 8 hour charters, or ask for something specialized from our site. 15% discount for EOD. 10% for all services veterans, and first responders and special needs families. Special rates for EOD students and AIED classes."
+  },
+  {
+    "name": "EOD Home Buying",
+    "ownerName": "Justin Hamilton",
+    "industry": "Real Estate",
+    "location": "San Antonio, TX",
+    "website": "https://www.EODHomeBuying.com",
+    "phone": "8504076244",
+    "description": "We provide expert services for all things real estate. Buying, selling, and financing!"
+  },
+  {
+    "name": "EOD Home Loans",
+    "ownerName": "Justin Hamilton",
+    "industry": "Mortgage Industry",
+    "location": "San Antonio, Texas",
+    "website": "https://www.EODHomeloans.com",
+    "phone": "8504076244",
+    "description": "We provide VA Home Loans and expert guidance through the home buying and financing process."
   }
 ]
